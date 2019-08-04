@@ -11,7 +11,8 @@ setup(
     description='',
     entry_points={
         'console_scripts': [
-            'mesoamerica-codices = pymesoamerica.cli:cli'
+            'mesoamerica = pymesoamerica.cli:cli',
+            'pymesoamerica = pymesoamerica.cli:cli'
         ],
         'pymesoamerica': [
             'borbonicus = pymesoamerica.codices:Borbonicus',
@@ -25,5 +26,5 @@ setup(
             'vaticanus-3773-b = pymesoamerica.codices:Vaticanus3773B',
         ]
     },
-    install_requires=['cmdln','requests','opencv-python'],
+    install_requires=['click','requests','opencv-python'],
 )
