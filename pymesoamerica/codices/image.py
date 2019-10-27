@@ -19,9 +19,11 @@ class Image(object):
                 pass
 
         urlretrieve(self._href, self._path)
-        print(json.dumps(dict(
+        status = dict(
             action='downloading',
             codex=self._codex.name,
             source=self._href,
             destination=self._path,
-        )))
+        )
+        # print(json.dumps(status))
+        return status

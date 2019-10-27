@@ -38,10 +38,13 @@ class Codex(object):
     def download_images(self, target_directory, number_of_threads=2):
         p = Pool(number_of_threads)
 
-        def img(i):
-            Image(self, **i).download()
+        p.map(self.download_image_callback, self.images(target_directory))
+        # for image in self.images(target_directory):
+        #     img(image)
+        # map(img, self.images(target_directory))
 
-        map(lambda i: print(i), self.images(target_directory))
+    def download_image_callback(self, i):
+        return Image(self, **i).download()
 
 
 class AlignmentCodex(Codex):

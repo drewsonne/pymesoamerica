@@ -38,13 +38,14 @@ def images(ctx):
 @cli.command()
 @click.argument('codex')
 @click.option('--prefix', '-P', help='Folder to download to.',
-              default='./')
+              default='./data/')
 @click.option('--number-of-threads', '-t', help='Number of threads.', type=int, default=2)
 @click.pass_context
 def download(ctx, codex, prefix, number_of_threads):
     for codex_ep, codex_obj in ctx.obj['catalogue']:
         if (codex_ep.name == codex):
             codex_obj.download_images(prefix, number_of_threads)
+            break
 
 
 @cli.command('download-all')
